@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Security Test Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/kendo/2013.3.1119/kendo.common.min.css" rel="stylesheet" />
+    <link href="Content/kendo/2013.3.1119/kendo.default.min.css" rel="stylesheet" />
+    <link href="Content/console.css" rel="stylesheet" />
+    <script src="Scripts/kendo/2013.3.1119/jquery.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/kendo/2013.3.1119/kendo.web.min.js"></script>
+    <script src="Scripts/console.js"></script>
+    <script src="Scripts/api.js"></script>
+    <script src="Scripts/app.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>Security Test Page</h1>
+            <p class="lead">Security prototype for Web Api v2 using OWIN</p>
+        </div>
+        <div>
+            <form class="form-inline" role="form">
+                <div data-bind ="invisible: hasRegistered" class="form-group">
+                    <label for="username" class="sr-only">User Name:&nbsp;</label>
+                    <input id="username" type="text" data-bind="value: userName" class="form-control" placeholder="User Name">
+                </div>
+                <div data-bind="invisible: isLogged()" class="form-group">
+                    <label for="password" class="sr-only">Password</label>
+                    <input id="password" type="text" data-bind="value: password" class="form-control" placeholder="Password">
+                </div>
+                <div data-bind="visible: hasRegistered" class="form-group">
+                    <p id="currentuser" class="form-control-static">Current <span data-bind="text: loginProvider"></span> User:&nbsp;<span data-bind="text: userName" class="text-primary"></span>&nbsp;</p>
+                </div>
+                <div class="form-group">
+                    <button id="register" data-bind="disabled: hasRegistered, click: register" type="button" class="btn btn-default">Register</button>
+                    <button id="signIn" data-bind="disabled: isLogged, click: signIn" type="button" class="btn btn-primary">Sign in</button>
+                    <button id="signOut" data-bind="enabled: isLogged, click: signOut" type="button" class="btn btn-default">Sign out</button>
+                    <button id="getExternalLogins" data-bind="disabled: hasExternalLogins, click: getExternalLogins" type="button" class="btn btn-default">Get External Logins</button>
+                </div>
+                <div id="externalLogins" data-bind="visible: hasExternalLogins" class="form-group"></div>
+                <div class="form-group">
+                    <button id="getValues" data-bind="click: getValues" type="button" class="btn btn-default">Get Values</button>
+                    <button id="getUserInfo" data-bind="click: getUserInfo" type="button" class="btn btn-default">Get User Info</button>
+                </div>
+                <span class="help-block">Register a user, sign in and get values. Eventually sign out and try a different user.</span>
+            </form>
+            <script type="text/x-kendo-template" id="externalLoginTemplate">
+                <button type="button" title="Log in using your #: Name # account" data-state="#= State #"  data-url="#= Url#" class="btn btn-default" data-bind="click: gotoExternalLogin">#: Name #</button>
+            </script>
+        </div>
+        <hr />
+        <div class="console"></div>
+    </div>
+</body>
+</html>

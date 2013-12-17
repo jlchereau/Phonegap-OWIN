@@ -188,14 +188,14 @@
     <Content Include="..\Phonegap.OWIN.UI\Scripts\app.js">
       <Link>www\Scripts\app.js</Link>
     </Content>
-    <Content Include="..\Phonegap.OWIN.UI\Scripts\bootstrap.js">
-      <Link>www\Scripts\bootstrap.js</Link>
-    </Content>
     <Content Include="..\Phonegap.OWIN.UI\Scripts\bootstrap.min.js">
       <Link>www\Scripts\bootstrap.min.js</Link>
     </Content>
     <Content Include="..\Phonegap.OWIN.UI\Scripts\console.js">
       <Link>www\Scripts\console.js</Link>
+    </Content>
+    <Content Include="..\Phonegap.OWIN.UI\Scripts\modernizr-2.6.2.min.js">
+      <Link>www\Scripts\modernizr-2.6.2.min.js</Link>
     </Content>
     <Content Include="config.xml" />
     <Content Include="www\Scripts\cordova.js" />

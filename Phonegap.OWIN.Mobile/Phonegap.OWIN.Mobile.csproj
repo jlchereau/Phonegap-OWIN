@@ -1,23 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!--
- Licensed to the Apache Software Foundation (ASF) under one
- or more contributor license agreements.  See the NOTICE file
- distributed with this work for additional information
- regarding copyright ownership.  The ASF licenses this file
- to you under the Apache License, Version 2.0 (the
- "License"); you may not use this file except in compliance
- with the License.  You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing,
- software distributed under the License is distributed on an
- "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- KIND, either express or implied.  See the License for the
- specific language governing permissions and limitations
- under the License. 
--->
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -176,6 +158,9 @@
     <Content Include="..\Phonegap.OWIN.UI\Content\console.css">
       <Link>www\Content\console.css</Link>
     </Content>
+    <Content Include="..\Phonegap.OWIN.UI\Content\index.css">
+      <Link>www\Content\index.css</Link>
+    </Content>
     <Content Include="..\Phonegap.OWIN.UI\fonts\glyphicons-halflings-regular.svg">
       <Link>www\fonts\glyphicons-halflings-regular.svg</Link>
     </Content>
@@ -184,6 +169,9 @@
     </Content>
     <Content Include="..\Phonegap.OWIN.UI\Scripts\api.js">
       <Link>www\Scripts\api.js</Link>
+    </Content>
+    <Content Include="..\Phonegap.OWIN.UI\Scripts\app.init.js">
+      <Link>www\Scripts\app.init.js</Link>
     </Content>
     <Content Include="..\Phonegap.OWIN.UI\Scripts\app.js">
       <Link>www\Scripts\app.js</Link>
@@ -198,10 +186,7 @@
       <Link>www\Scripts\modernizr-2.6.2.min.js</Link>
     </Content>
     <Content Include="config.xml" />
-    <Content Include="www\Scripts\cordova.js" />
-    <Content Include="www\cordova.html" />
-    <Content Include="www\Content\index.css" />
-    <Content Include="www\Scripts\index.js" />
+    <Content Include="www\cordova.js" />
     <Content Include="www\img\logo.png" />
     <Content Include="Images\appbar.back.rest.png" />
     <Content Include="Images\appbar.close.rest.png" />
@@ -259,13 +244,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
   <ProjectExtensions />
   <PropertyGroup>
   </PropertyGroup>
@@ -273,4 +251,19 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Plugins\org.apache.cordova.device\Device.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Plugins\org.apache.cordova.inappbrowser\InAppBrowser.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="www\plugins\org.apache.cordova.device\www\device.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="www\plugins\org.apache.cordova.inappbrowser\www\InAppBrowser.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="www\cordova_plugins.js" />
+  </ItemGroup>
 </Project>

@@ -22,9 +22,11 @@ namespace Phonegap.OWIN
             //See: http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api
             //See also: http://blogs.msdn.com/b/webdev/archive/2013/07/02/manage-cors-policy-dynamically.aspx
             //And  http://blogs.msdn.com/b/yaohuang1/archive/2013/04/05/try-out-asp.net-web-api-cors-support-using-the-nightly-builds.aspx
-            var cors = new EnableCorsAttribute("*", "*", "*"); //new MyCorsPolicyAttribute());
-            cors.SupportsCredentials = true;
-            config.EnableCors(cors);
+            //var cors = new EnableCorsAttribute("*", "*", "*"); //new MyCorsPolicyAttribute());
+            //cors.SupportsCredentials = true;
+            //config.EnableCors(cors);
+            config.SetCorsPolicyProviderFactory(new MyCorsPolicyFactory());
+            config.EnableCors();
             //END ADDED BY JLC
 
             // Web API configuration and services
@@ -45,6 +47,16 @@ namespace Phonegap.OWIN
 
     //BEGIN ADDED BY JLC
     //See Above
+    public class MyCorsPolicyFactory : ICorsPolicyProviderFactory
+    {
+        ICorsPolicyProvider _provider = new MyCorsPolicyAttribute();
+
+        public ICorsPolicyProvider GetCorsPolicyProvider(HttpRequestMessage request)
+        {
+            return _provider;
+        }
+    }
+
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false)]
     public class MyCorsPolicyAttribute : Attribute, ICorsPolicyProvider
     {
@@ -62,9 +74,17 @@ namespace Phonegap.OWIN
             // Add allowed origins.
             //_policy.Origins.Add("http://myclient.azurewebsites.net");
             //_policy.Origins.Add("http://www.contoso.com");
+#if DEBUG
+            _policy.Origins.Add("http://phonegap-owin-ui.azurewebsites.net");
+#else
+            //This might not work because the CORS spec states that
+            //you cannot have Access-Control-Allow-Credentials: true
+            //With Access-Control-Allow-Origin: *
+            //See: https://developer.mozilla.org/en/docs/HTTP/Access_control_CORS#Requests_with_credentials
+            //So we are only allowing * in debug mode
             _policy.Origins.Add("*");
-
-            _policy.SupportsCredentials = true;
+#endif
+            _policy.SupportsCredentials = true; //
         }
 
         //public Task<CorsPolicy> GetCorsPolicyAsync(HttpRequestMessage request)

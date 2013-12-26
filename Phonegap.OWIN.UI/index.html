@@ -2,21 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Security Test Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="Content/bootstrap.css" rel="stylesheet" />
-    <!--link href="Content/kendo/2013.3.1119/kendo.common.min.css" rel="stylesheet" /-->
-    <!--link href="Content/kendo/2013.3.1119/kendo.default.min.css" rel="stylesheet" /-->
-    <link href="http://cdn.kendostatic.com/2013.3.1119/styles/kendo.common.min.css" rel="stylesheet" />
-    <link href="http://cdn.kendostatic.com/2013.3.1119/styles/kendo.default.min.css" rel="stylesheet" />
-    <link href="Content/console.css" rel="stylesheet" />
-    <!--script src="Scripts/kendo/2013.3.1119/jquery.min.js"></script-->
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
-    <!--script src="Scripts/kendo/2013.3.1119/kendo.web.min.js"></script-->
-    <script src="http://cdn.kendostatic.com/2013.3.1119/js/kendo.web.min.js"></script>
-    <script src="Scripts/console.js"></script>
-    <script src="Scripts/api.js"></script>
-    <script src="Scripts/app.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="Scripts/modernizr-2.6.2.min.js"></script>
+    <script type="text/javascript" src="Scripts/app.init.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -53,6 +44,7 @@
                 <div class="form-group">
                     <button id="getValues" data-bind="click: getValues" type="button" class="btn btn-default">Get Values</button>
                     <button id="getUserInfo" data-bind="click: getUserInfo" type="button" class="btn btn-default">Get User Info</button>
+                    <button id="openInAppBrowser" data-bind="click: openInAppBrowser" type="button" class="btn btn-default">InAppBrowser</button>
                 </div>
                 <span class="help-block">Register a user, sign in and get values. Eventually sign out and try a different user.</span>
             </form>

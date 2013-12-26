@@ -58,17 +58,21 @@ namespace Phonegap.OWIN
             app.UseOAuthBearerTokens(OAuthOptions);
 
             // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            
+            // Get clientId and clientSecret from https://account.live.com/developers/applications
+            app.UseMicrosoftAccountAuthentication(
+                clientId: "000000004C10B315",
+                clientSecret: "4B1bfQv3KBVO0UhLBa3hqQQ5EdRp9t8C");
 
-            //app.UseTwitterAuthentication(
-            //    consumerKey: "",
-            //    consumerSecret: "");
+            // Register your application at https://dev.twitter.com/apps
+            app.UseTwitterAuthentication(
+                consumerKey: "CuZH3QAXT9YREUX0ahXg",
+                consumerSecret: "mPmslNVecUT2BKvIDnxij9GV1vkaMHJ3bsxwsaqguec");
 
-            //app.UseFacebookAuthentication(
-            //    appId: "",
-            //    appSecret: "");
+            //Register your application at https://developers.facebook.com/apps
+            app.UseFacebookAuthentication(
+                appId: "245869555573253",
+                appSecret: "bbbdbbfbe56c1bbea5aa04d7c95d14b6");
 
             app.UseGoogleAuthentication();
         }

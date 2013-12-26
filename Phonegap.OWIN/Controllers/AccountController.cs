@@ -16,11 +16,13 @@ using Microsoft.Owin.Security.OAuth;
 using Phonegap.OWIN.Models;
 using Phonegap.OWIN.Providers;
 using Phonegap.OWIN.Results;
+using System.Web.Http.Cors;
 
 namespace Phonegap.OWIN.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]
+    //[EnableCors("*", "*", "*")]
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";

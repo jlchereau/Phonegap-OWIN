@@ -1,4 +1,4 @@
-﻿//Copyright ©2011-2012 Memba® Sarl. All rights reserved.
+﻿//Copyright ©2013-2014 Memba® Sarl. All rights reserved.
 /*jslint browser:true*/
 /*jshint browser:true*/
 
@@ -95,7 +95,7 @@
                 .then(app.asyncLog, app.asyncErr);
         },
         getExternalLogins: function (e) {
-            debug.log('Get external logins');
+            debug.log('Get external logins with returnUrl = ' + window.location.protocol + '//' + window.location.host + window.location.pathname);
             //$.when(api.getExternalLogins('/', true))
             //Get rid of hash and querystring in returnUrl
             $.when(api.getExternalLogins(window.location.protocol + '//' + window.location.host + window.location.pathname, true))
@@ -117,11 +117,35 @@
             // to localStorage to work around this problem.
             api._util.archiveSessionStorageToLocalStorage();
             //window.open($(e.target).data('url'), "login", "width=400, height=400"); //sessionStorage["loginUrl"] is undefined
+
             window.location.assign($(e.target).data('url'));
+        },
+        openInAppBrowser: function (e) {
+            See: http://phonegap-tips.com/articles/google-api-oauth-with-phonegaps-inappbrowser.html
+            var ref = window.open('http://apache.org', '_blank', 'location=no, toolbar=no'),
+                loadStartHandler = function () {
+                    debug.log(event.url);
+                },
+                exitHandler = function () {
+                    ref.removeEventListener('loadstart');
+                    ref.removeEventListener('exit');
+                };
+            ref.addEventListener('loadstart', loadStartHandler);
+            ref.addEventListener('exit', exitHandler);
         }
     });
 
-    $(document).ready(function () {
+    app.onDeviceReady = function () {
+
+        //TODO: If you’re sending text to the Visual Studio output window, you can format the text so that
+        //you can open the source file just by double-clicking the line in the output window. Needs to look like this:
+        //filename(linenumber): message
+        window.onerror = function (errMsg, fileName, ln) {
+            window.external.Notify("Error : " + errMsg +
+                    ", In file : " + fileName +
+                    ", at line number:" + ln);
+        };
+
         debug.log('document ready');
 
         if (window.location.hash.indexOf('#access_token=') === 0) {
@@ -130,14 +154,21 @@
             var session = api.parseExternalToken(window.location.hash);
             app.viewModel.set('session', session);
             app.viewModel.set('userName', '?');
-            app.viewModel.set('hasRegistered', true); //do not display teh register button
-            app.viewModel.set('loginProvider', null); //do not display teh register button
+            app.viewModel.set('hasRegistered', true); //do not display the register button
+            app.viewModel.set('loginProvider', null); //do not display the register button
         }
 
+        if (window.device) {
+            debug.log('This is a phonegap device: ' + window.device.model);
+        } else {
+            debug.log('This is a browser: ' + window.navigator.userAgent);
+        }
 
         kendo.bind($("form"), app.viewModel);
         debug.log('document bound to view model');
 
+        debug.log('api located at ' + api.endPoints.root);
+        
         //debugger;
         //following instructions at http://www.asp.net/web-api/overview/security/individual-accounts-in-web-api
         //and http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api
@@ -146,7 +177,7 @@
         //    .then(api.getValues)
         //    .then(app.asyncLog, app.asyncErr);
 
-    });
+    };
 
 }(jQuery));
 

@@ -57,14 +57,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\Phonegap.OWIN.Mobile\www\Scripts\cordova.js">
-      <Link>Scripts\cordova.js</Link>
-    </Content>
     <Content Include="App_Readme\modernizr.full\readme.txt" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\index.css" />
     <Content Include="Content\kendo\2013.3.1119\Black\editor.png" />
     <Content Include="Content\kendo\2013.3.1119\Black\imagebrowser.png" />
     <Content Include="Content\kendo\2013.3.1119\Black\indeterminate.gif" />
@@ -221,9 +219,11 @@
     <Content Include="Content\kendo\2013.3.1119\Uniform\sprite_2x.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Scripts\app.datamodel.js" />
+    <Content Include="Scripts\app.init.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\phonegap-owin-ui.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
@@ -1073,6 +1073,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="plugins\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -1098,6 +1101,11 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>copy /y "$(SolutionDir)Phonegap.OWIN.Mobile\www\cordova.js" "$(SolutionDir)Phonegap.OWIN.UI\cordova.js"
+copy /y "$(SolutionDir)Phonegap.OWIN.Mobile\www\cordova_plugins.js" "$(SolutionDir)Phonegap.OWIN.UI\cordova_plugins.js" 
+xcopy /e /y "$(SolutionDir)Phonegap.OWIN.Mobile\www\plugins" "$(SolutionDir)Phonegap.OWIN.UI\Plugins"</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

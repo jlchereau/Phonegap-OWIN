@@ -1,4 +1,5 @@
-﻿/*jslint browser:true */
+﻿/*jshint browser:true*/
+/*jslint browser:true */
 /*global $: false, jQuery: false */
 
 (function ($) {

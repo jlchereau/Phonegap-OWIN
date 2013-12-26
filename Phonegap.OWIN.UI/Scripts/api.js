@@ -1,15 +1,21 @@
-﻿; (function ($, undefined) {
+﻿//Copyright ©2013-2014 Memba® Sarl. All rights reserved.
+/*jslint browser:true*/
+/*jshint browser:true*/
+
+
+; (function ($, undefined) {
 
     "use strict";
 
     var fn = Function,
         global = fn('return this')(),
         kendo = global.kendo,
-        api = global.api = global.api || {};
-
+        api = global.api = global.api || {},
+        MODULE = 'api.js: ',
+        DEBUG = false;
 
     api.endPoints = {
-        root: 'http://localhost:64260',
+        root: 'http://phonegap-owin.azurewebsites.net',
         externalLogins: '/api/Account/ExternalLogins',
         token: '/Token',
         register: '/api/Account/Register',
@@ -19,7 +25,12 @@
         values: '/api/values'
     };
 
+    if (DEBUG) {
+        api.endPoints.root = 'http://localhost:64260';
+    }
+    
     api._util = {
+
         getSecurityHeaders : function () {
             var accessToken = sessionStorage["accessToken"] || localStorage["accessToken"];
             if (accessToken) {
@@ -27,10 +38,12 @@
             }
             return {};
         },
+
         clearAccessToken : function () {
             localStorage.removeItem("accessToken");
             sessionStorage.removeItem("accessToken");
         },
+
         setAccessToken : function (accessToken, persistent) {
             if (persistent) {
                 localStorage["accessToken"] = accessToken;
@@ -38,6 +51,7 @@
                 sessionStorage["accessToken"] = accessToken;
             }
         },
+
         archiveSessionStorageToLocalStorage : function () {
             var backup = {};
 
@@ -48,6 +62,7 @@
             localStorage["sessionStorageBackup"] = JSON.stringify(backup);
             sessionStorage.clear();
         },
+
         restoreSessionStorageFromLocalStorage : function () {
             var backupText = localStorage["sessionStorageBackup"],
                 backup;

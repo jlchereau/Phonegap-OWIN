@@ -9,6 +9,7 @@ using System.Web.Http.Cors;
 namespace Phonegap.OWIN.Controllers
 {
     [Authorize]
+    //[EnableCors("*", "*", "*")]
     public class ValuesController : ApiController
     {
         // GET api/values

@@ -224,7 +224,9 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\phonegap-owin-ui.pubxml" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
     <Content Include="Scripts\kendo\2013.3.1119\cultures\kendo.culture.af-ZA.min.js" />
@@ -581,7 +583,6 @@
     <Content Include="Scripts\kendo\2013.3.1119\cultures\kendo.culture.zh.min.js" />
     <Content Include="Scripts\kendo\2013.3.1119\cultures\kendo.culture.zu-ZA.min.js" />
     <Content Include="Scripts\kendo\2013.3.1119\cultures\kendo.culture.zu.min.js" />
-    <Content Include="Scripts\kendo\2013.3.1119\jquery.min.js" />
     <Content Include="Scripts\kendo\2013.3.1119\kendo.autocomplete.min.js" />
     <Content Include="Scripts\kendo\2013.3.1119\kendo.binder.min.js" />
     <Content Include="Scripts\kendo\2013.3.1119\kendo.button.min.js" />
@@ -694,7 +695,6 @@
     <Content Include="Scripts\kendo\2013.3.1119\kendo.button.min.js.map" />
     <Content Include="Scripts\kendo\2013.3.1119\kendo.binder.min.js.map" />
     <Content Include="Scripts\kendo\2013.3.1119\kendo.autocomplete.min.js.map" />
-    <Content Include="Scripts\kendo\2013.3.1119\jquery.min.map" />
     <Content Include="Scripts\kendo\2013.3.1119\cultures\kendo.culture.zu-ZA.min.js.map" />
     <Content Include="Scripts\kendo\2013.3.1119\cultures\kendo.culture.zu.min.js.map" />
     <Content Include="Scripts\kendo\2013.3.1119\cultures\kendo.culture.zh-TW.min.js.map" />

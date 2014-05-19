@@ -9,13 +9,13 @@ The prototype has been hosted on Windows Azure:
 - The API server can be reached at http://phonegap-owin.azurewebsites.net/
 - The html 5 app (UI) can be reached at http://phonegap-owin-ui.azurewebsites.net/
 
-**Important: some functions are now failing after dropping the billable SQL Sevrer database.**
+**Important: some functions are now failing after dropping the billable SQL Server database.**
 
 ## Important Note
 
 For various reasons essentially pertaining to the overall complexity and obscurity (black box) of the Microsoft .NET stack (OWIN, ASP.NET, MVC 5, Web API 2, etc.), this architecture has been dropped in favor of [Phonegap.Express](https://github.com/jlchereau/Phonegap.Express).
 
-In particular, we could not easily figure out why the oAuth authentication flow implemented in OWIN would require SignalR and how to configure bearer token authentication without SignalR. 
+In particular, [Fiddler](http://www.telerik.com/fiddler) was revealing requests (SignalR, OpenId endpoints) that did not pertain to the standard oAuth 2.0 authentication flow.
 
 ## Copyright
 

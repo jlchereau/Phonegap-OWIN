@@ -2,6 +2,10 @@
 
 > Phonegap-OWIN is a prototype built on SQL Server, ASP.NET Web API 2 and Kendo UI to demonstrate accessing a RESTful JSON api secured with oAuth 2.0 from browsers and Phonegap applications.
 
+## Design
+
+The design is compliant with [Microsoft tutorials](http://www.asp.net/web-api/overview/security/external-authentication-services).
+
 ## Running the prototype
 
 The prototype has been hosted on Windows Azure:
@@ -13,9 +17,9 @@ The prototype has been hosted on Windows Azure:
 
 ## Important Note
 
-For various reasons essentially pertaining to the overall complexity and obscurity (black box) of the Microsoft .NET stack (OWIN, ASP.NET, MVC 5, Web API 2, etc.), this architecture has been dropped in favor of [Phonegap.Express](https://github.com/jlchereau/Phonegap.Express).
+For various reasons essentially pertaining to the overall complexity and obscurity (black box) of the Microsoft .NET stack (OWIN, ASP.NET, MVC 5, Web API 2, ASP.NET identity, etc.), this architecture has been dropped in favor of [Phonegap.Express](https://github.com/jlchereau/Phonegap.Express).
 
-In particular, [Fiddler](http://www.telerik.com/fiddler) was revealing requests (SignalR, OpenId endpoints) that did not pertain to the standard oAuth 2.0 authentication flow.
+In particular, Microsoft has been changing the Membership system too often and ASP.NET identity still locks you in an Entity Framework model and database design. Also [Fiddler](http://www.telerik.com/fiddler) was revealing requests (SignalR, OpenId endpoints) that did not pertain to the standard oAuth 2.0 authentication flow.  
 
 ## Copyright
 

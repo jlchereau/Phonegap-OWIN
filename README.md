@@ -19,7 +19,7 @@ The prototype has been hosted on Windows Azure:
 
 For various reasons essentially pertaining to the overall complexity and obscurity (black box) of the Microsoft .NET stack (OWIN, ASP.NET, MVC 5, Web API 2, ASP.NET identity, etc.), this architecture has been dropped in favor of [Phonegap.Express](https://github.com/jlchereau/Phonegap.Express).
 
-In particular, Microsoft has been changing the Membership system too often and ASP.NET identity still locks you in an Entity Framework model and database design. Also [Fiddler](http://www.telerik.com/fiddler) was revealing requests (SignalR, OpenId endpoints) that did not pertain to the standard oAuth 2.0 authentication flow.  
+In particular, Microsoft has been changing the Membership system too often and ASP.NET identity still locks a project into its Entity Framework model and database design. Also [Fiddler](http://www.telerik.com/fiddler) was revealing requests (SignalR, OpenId endpoints) that did not pertain to the standard oAuth 2.0 authentication flow. Besides, there are many benefits to the Phonegap.Express architecture: Javascript only, OS agnostic, PaaS agnostic (AWS, Azure, Heroku),  Open Source, etc.
 
 ## Copyright
 
